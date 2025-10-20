@@ -1,0 +1,357 @@
+/* HEADER */
+.header {
+    background-color: #fff;
+    color: #1203f9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    gap: 16px;
+}
+
+.logoArea { 
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.logo { 
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    color: #333; 
+    text-decoration: none;
+    margin-left: 8px;
+}
+
+/* NAV Y BOTONES */
+.nav { 
+    display: flex; 
+    gap: 20px;
+    align-items: center;
+}
+
+.link, .carrito { 
+    text-decoration: none; 
+    color: #333; 
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.carrito { 
+    position: relative; 
+    font-size: 1.2rem; 
+}
+
+.contador {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background-color: #f00;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+/* USUARIO */
+.userArea { 
+    display: flex; 
+    align-items: center;
+    margin-left: 10px;
+}
+
+.logout {
+    border: none;
+    background-color: #ff4444;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.logout-container {
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.menu-lateral .logout {
+    background-color: #ff4444;
+    padding: 8px 18px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background 0.2s ease;
+}
+
+.menu-lateral .logout:hover {
+    background-color: #ff2222;
+}
+
+/* btn iniciar sesion */
+.login {
+    border: none;
+    background-color: #1203f9;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    transition: background 0.2s ease;
+}
+
+.login:hover {
+    background-color: #0d02c0;
+}
+
+/* En menú lateral */
+.menu-lateral .login {
+    background-color: #ffdd00;
+    color: #1203f9;
+    padding: 8px 18px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background 0.2s ease;
+    font-weight: 600;
+}
+
+.menu-lateral .login:hover {
+    background-color: #f5cc00;
+}
+
+/* MODAL LOGIN */
+.modal-login {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    animation: aparecer 0.3s ease;
+}
+
+.modal-content h2 {
+    margin-bottom: 16px;
+    color: #1203f9;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-content input {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.modal-content input:focus {
+    border-color: #1203f9;
+    outline: none;
+    box-shadow: 0 0 4px rgba(18, 3, 249, 0.3);
+}
+
+.modal-content button[type="submit"] {
+    padding: 8px 0;
+    border: none;
+    border-radius: 6px;
+    background: #1203f9;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.modal-content button[type="submit"]:hover {
+    background: #0e02c4;
+}
+
+.modal-content .cerrar {
+    background: transparent;
+    margin-top: 10px;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ICONOS */
+.link svg, .carrito svg, .logout svg {
+    vertical-align: middle;
+}
+
+/* MENU LATERAL */
+.btn-menu {
+    font-size: 22px;
+    background: none;
+    border: none;
+    color: #1203f9;
+    cursor: pointer;
+    display: none;
+    z-index: 30;
+}
+
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    max-width: 80%;
+    height: 100%;
+    background: #1203f9;
+    color: #fff;
+    transform: translateX(-100%);
+    padding: 22px;
+    z-index: 20;
+    box-shadow: 4px 0 12px rgba(0,0,0,0.18);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.menu-lateral.activo {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu-lateral.cerrando {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.menu-logo {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.menu-logo img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.menu-logo h2 {
+    font-size: 1.05rem;
+    margin: 8px 0 0;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* LISTA INTERNA */
+.menu-lateral ul {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0 0;
+}
+
+.menu-lateral li {
+    margin: 14px 0;
+}
+
+.menu-lateral a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+}
+
+.menu-lateral a:hover {
+    color: #ffdd00;
+}
+
+/* OVERLAY */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    z-index: 15;
+    pointer-events: auto;
+}
+
+.overlay.oculto {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .nav {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav .link {
+        display: none;
+    }
+
+    .nav .carrito {
+        display: flex;
+        margin-left: auto;
+    }
+
+    .userArea {
+        display: none;
+    }
+
+    .btn-menu {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 769px) {
+    .menu-lateral,
+    .overlay {
+        display: none;
+    }
+}
