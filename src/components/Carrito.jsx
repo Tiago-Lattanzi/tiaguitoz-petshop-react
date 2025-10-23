@@ -52,13 +52,13 @@ const Carrito = () => {
                                         <img src={item.imagen} alt={item.nombre} className="carrito-img" />
                                         {item.nombre}
                                     </td>
-                                    <td>${item.precio}</td>
+                                    <td>${item.precio.toLocaleString("es-AR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                                     <td className="carrito-cantidad">
                                         <button onClick={() => disminuirCantidad(item.id)}>-</button>
                                         <span>{item.cantidad}</span>
                                         <button onClick={() => aumentarCantidad(item.id)}>+</button>
                                     </td>
-                                    <td>${item.precio * item.cantidad}</td>
+                                    <td>${(item.precio * item.cantidad).toLocaleString("es-AR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                                     <td>
                                         <button
                                             className="carrito-eliminar"
@@ -79,7 +79,7 @@ const Carrito = () => {
                         >
                             Vaciar carrito
                         </button>
-                        <h3>Total: ${total}</h3>
+                        <h3>Total: ${total.toLocaleString("es-AR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</h3>
                     </div>
                 </>
             )}

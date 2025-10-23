@@ -6,7 +6,7 @@ export function ProductosProvider({ children }) {
     const [productos, setProductos] = useState([]);
     const [cargando, setCargando] = useState(false);
     const [error, setError] = useState(null);
-    const API_URL = "https://68f40491b16eb6f46833b3c0.mockapi.io/productos";
+    const API_URL = "https://68f40491b16eb6f46833b3c0.mockapi.io/api/productos";
 
   //  Leer productos
     const obtenerProductos = async () => {

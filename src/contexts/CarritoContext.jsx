@@ -72,9 +72,8 @@ export function CarritoProvider({ children }) {
     };
 
     // Calcular total
-    const total = carrito.reduce(
-        (acc, producto) => acc + producto.precio * producto.cantidad,
-        0
+    const total = parseFloat(
+        carrito.reduce((acc, producto) => acc + producto.precio * producto.cantidad, 0).toFixed(2)
     );
 
     // Calcular cantidad total de productos (para el contador del header)
