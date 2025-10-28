@@ -5,6 +5,7 @@ import Header from './components/header'
 import Login from './components/Login'
 import Carrito from './components/Carrito';
 import Productos from './components/Productos';
+import ProductoDetalle from './components/ProductosDetalle';
 import RutaProtegida from './routes/RutaProtegida';
 import { CarritoContext } from './contexts/CarritoContext';
 import { ToastContainer } from "react-toastify";
@@ -33,6 +34,8 @@ function App() {
         />
 
         <Route path="/productos" element={<Productos />} />
+
+        <Route path="/producto/:id" element={<ProductoDetalle />} />
 
         {/* <Route path='/adminproductos' element={<AdminProductos />} /> */}
       </Routes>

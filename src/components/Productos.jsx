@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { ProductosContext } from "../contexts/ProductosContext";
 import { CarritoContext } from "../contexts/CarritoContext";
+import { Link } from "react-router-dom";
 
 const Productos = () => {
   const { productos, cargando, error } = useContext(ProductosContext);
@@ -63,6 +64,9 @@ const Productos = () => {
             >
               Agregar al carrito
             </button>
+            <Link to={`/producto/${producto.id}`} style={{ display: "block", marginTop: "8px" }}>
+              Ver más
+            </Link>
           </div>
         ))}
       </div>
