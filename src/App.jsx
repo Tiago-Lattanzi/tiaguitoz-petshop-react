@@ -11,6 +11,7 @@ import { CarritoContext } from './contexts/CarritoContext';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AdminProductos from './components/AdminProductos';
+import Footer from './components/footer';
 
 
 function App() {
@@ -18,31 +19,42 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* Mostrar Header siempre, con el nombre actual */}
-      <Header nombreUsuario={usuario?.nombre || "Anónimo"} />
       
-      <Routes>
-        <Route path="/login" element={<Login />} />
+      <div style={{ 
+        display: "flex", 
+        flexDirection: "column", 
+        minHeight: "100vh"
+      }}>
 
-        {/* Ruta protegida */}
-        <Route path="/carrito" element={<Carrito />} />
+        {/* Mostrar Header siempre, con el nombre actual */}
+        <Header nombreUsuario={usuario?.nombre || "Anónimo"} />
+      
+        <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+          <Routes>
+            <Route path="/login" element={<Login />} />
 
-        {/* Rutas publicas */}
-        <Route
-          path="/"
-          element={<h2 style={{ textAlign: "center" }}>Página de Inicio 🏠</h2>}
-        />
+            {/* Ruta protegida */}
+            <Route path="/carrito" element={<Carrito />} />
 
-        <Route path="/productos" element={<Productos />} />
+            {/* Rutas publicas */}
+            <Route
+              path="/"
+              element={<h2 style={{ textAlign: "center" }}>Página de Inicio 🏠</h2>}
+            />
 
-        <Route path="/producto/:id" element={<ProductoDetalle />} />
+            <Route path="/productos" element={<Productos />} />
 
-        {/* <Route path='/adminproductos' element={<AdminProductos />} /> */}
-      </Routes>
+            <Route path="/producto/:id" element={<ProductoDetalle />} />
+
+            {/* <Route path='/adminproductos' element={<AdminProductos />} /> */}
+          </Routes>
+        </div>
+        <Footer />
+      </div>
 
       <ToastContainer position="top-right" autoClose={3000} />
     </BrowserRouter>
-  )
+  );
 }
 
 export default App

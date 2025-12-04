@@ -1,7 +1,33 @@
 .footer {
     margin-top: auto;
-    background-color: #fff;
-    color: #1203f9;
+    background-color: #1203f9;
+    color: #fff;
     text-align: center;
-    padding: 20px;
+    padding: 20px 10px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-contenido {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.footer-redes {
+    margin-top: 10px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.footer-redes a {
+    color: #97c4ff;
+    transition: 0.2s;
+    font-size: 20px;
+}
+
+.footer-redes a:hover {
+    color: #fff;
+    transform: scale(1.1);
 }
