@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { CarritoContext } from "../contexts/CarritoContext";
 import { FaShoppingCart, FaHome, FaBoxOpen, FaSignOutAlt, FaSignInAlt, FaBars, FaTimes } from "react-icons/fa";
+import Buscador from "./Buscador";
 import "../styles/estilos-globales.css"
 import "../styles/header.css"
 
@@ -70,6 +71,8 @@ function Header() {
             <div className="logoArea">
                 <Link to="/" className="logo">Bienvenido {usuario.nombre || "Anonimo"}</Link>
             </div>
+
+            <Buscador />
 
             <nav className="nav">
                 <Link to="/" className="link"><FaHome /> Inicio</Link>
