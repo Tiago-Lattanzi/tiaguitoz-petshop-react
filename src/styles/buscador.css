@@ -19,9 +19,22 @@
     border-radius: 6px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.15);
     z-index: 9999;
-    max-height: 220px; /* permite scroll si hay muchas */
-    overflow-y: auto;
-    overflow-x: hidden;
+    max-height: 0px;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease, opacity 0.25s ease;
+}
+
+.buscador-sugerencias.activo {
+    max-height: 300px;
+    opacity: 1;
+}
+
+mark {
+    background: #fff2a8;
+    color: black;
+    padding: 0 2px;
+    border-radius: 2px;
 }
 
 /* Scrollbar fino */

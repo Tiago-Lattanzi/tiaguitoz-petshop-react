@@ -1,0 +1,108 @@
+/* ============================
+    SECCIÓN CATEGORÍAS
+============================ */
+
+.inicio-categorias {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.inicio-categorias h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #1203f9;
+}
+
+.categorias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.categoria-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.categoria-card:hover {
+    transform: translateY(-5px);
+}
+
+.categoria-card img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.categoria-card p {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+/* ============================
+    SECCIÓN PRODUCTOS POPULARES
+============================ */
+
+.inicio-populares {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.inicio-populares h2 {
+    font-size: 1.8rem;
+    color: #1203f9;
+    margin-bottom: 20px;
+}
+
+.populares-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.popular-card {
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popular-card:hover {
+    transform: translateY(-5px);
+}
+
+.popular-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
+
+.btn-ver-mas {
+    margin-top: 25px;
+    padding: 10px 20px;
+    border: none;
+    background: #1203f9;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-ver-mas:hover {
+    opacity: 0.8;
+}

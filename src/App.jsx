@@ -12,6 +12,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AdminProductos from './components/AdminProductos';
 import Footer from './components/footer';
+import MainInicio from "./components/MainInicio";
+
 
 
 function App() {
@@ -37,10 +39,7 @@ function App() {
             <Route path="/carrito" element={<Carrito />} />
 
             {/* Rutas publicas */}
-            <Route
-              path="/"
-              element={<h2 style={{ textAlign: "center" }}>Página de Inicio 🏠</h2>}
-            />
+            <Route path="/" element={<MainInicio />} />
 
             <Route path="/productos" element={<Productos />} />
 

@@ -14,6 +14,14 @@ function Buscador() {
     const itemsRef = useRef([]);
     const navigate = useNavigate();
 
+     // 🔵 Función para resaltar coincidencias
+    const resaltarCoincidencia = (nombre, busqueda) => {
+        if (!busqueda) return nombre;
+
+        const regex = new RegExp(`(${busqueda})`, "gi");
+        return nombre.replace(regex, "<mark>$1</mark>");
+    };
+
     // Filtrar sugerencias
     useEffect(() => {
         if (texto.trim().length === 0) {
@@ -53,27 +61,37 @@ function Buscador() {
         }
     }, [indiceSeleccionado]);
 
-    // Manejo de teclas global
+    // Manejo de teclas
     const manejarTeclas = (e) => {
-        if (!visible || sugerencias.length === 0) return;
+        if (!visible) return;
 
         if (e.key === "ArrowDown") {
             e.preventDefault();
-            setIndiceSeleccionado((prev) =>
-                prev < sugerencias.length - 1 ? prev + 1 : 0
-            );
+            if (sugerencias.length > 0)
+                setIndiceSeleccionado((prev) =>
+                    prev < sugerencias.length - 1 ? prev + 1 : 0
+                );
         }
 
         if (e.key === "ArrowUp") {
             e.preventDefault();
-            setIndiceSeleccionado((prev) =>
-                prev > 0 ? prev - 1 : sugerencias.length - 1
-            );
+            if (sugerencias.length > 0)
+                setIndiceSeleccionado((prev) =>
+                    prev > 0 ? prev - 1 : sugerencias.length - 1
+                );
         }
 
-        if (e.key === "Enter" && indiceSeleccionado >= 0) {
+        if (e.key === "Enter") {
             e.preventDefault();
-            manejarSeleccion(sugerencias[indiceSeleccionado].id);
+            
+            if (indiceSeleccionado >= 0 && sugerencias[indiceSeleccionado]) {
+                manejarSeleccion(sugerencias[indiceSeleccionado].id);
+                return;
+            }
+
+            if (sugerencias.length > 0) {
+                manejarSeleccion(sugerencias[0].id);
+            }
         }
 
         if (e.key === "Escape") {
@@ -104,9 +122,21 @@ function Buscador() {
                 className="buscador-input"
             />
 
-            {visible && sugerencias.length > 0 && (
-                <div className="buscador-sugerencias">
-                    {sugerencias.map((p, i) => (
+            {/* 📌 Contenedor con animación */}
+            <div
+                className={`buscador-sugerencias ${
+                    visible && texto.length > 0 ? "activo" : ""
+                }`}
+            >
+                {/* 🔵 A2 — Mensaje cuando no hay resultados */}
+                {visible && texto.length > 0 && sugerencias.length === 0 && (
+                    <div className="buscador-sin-resultados">
+                        No se encontraron productos
+                    </div>
+                )}
+
+                {visible && sugerencias.length > 0 && 
+                    sugerencias.map((p, i) => (
                         <div
                             key={p.id}
                             ref={(el) => (itemsRef.current[i] = el)}
@@ -117,11 +147,15 @@ function Buscador() {
                             onClick={() => manejarSeleccion(p.id)}
                         >
                             <img src={p.imagen} alt="" />
-                            <span>{p.nombre}</span>
+                            {/* 🔵 A1 — Resaltado de coincidencias */}
+                            <span
+                                dangerouslySetInnerHTML={{
+                                    __html: resaltarCoincidencia(p.nombre, texto)
+                                }}
+                            />
                         </div>
                     ))}
                 </div>
-            )}
         </div>
     );
 }
