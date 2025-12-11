@@ -20,6 +20,18 @@ function MainInicio() {
         setModalAbierto(false);
     };
 
+    const [formEnviado, setFormEnviado] = useState(false);
+    const [formValido, setFormValido] = useState(false);
+
+    const [enviandoFormulario, setEnviandoFormulario] = useState(false);
+    const [inputsCompletos, setInputsCompletos] = useState({
+        nombre: false,
+        email: false,
+        mensaje: false
+    });
+
+    const [intentoEnvio, setIntentoEnvio] = useState(false);
+
     const categorias = [
         { id: "perro", nombre: "Perros", img: "https://cdn-icons-png.flaticon.com/512/616/616408.png" },
         { id: "gato", nombre: "Gatos", img: "https://cdn-icons-png.flaticon.com/512/616/616430.png" },
@@ -156,6 +168,154 @@ function MainInicio() {
                         </button>
                     </div>
 
+                </div>
+            </div>
+
+            {/* INFORMACIÓN DE CONTACTO + MAPA */}
+            <div className="inicio-contacto-seccion">
+                <h2>Contacto y ubicación</h2>
+
+                <div className="contacto-grid">
+                    
+                    {/* MAPA + INFO*/}
+                    <div className="contacto-mapa">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6565.908928001306!2d-58.49531!3d-34.630591!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc43ad634b1ea7ef%3A0xab4e910fd9a6294b!2sTiaguitoz%20Petshop!5e0!3m2!1ses-419!2sar!4v1765412578057!5m2!1ses-419!2sar"
+                            allowfullscreen="" 
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="mapa ubicación"
+                        ></iframe>
+
+                        <div className="contacto-datos"> 
+                            <h3>Datos de contacto</h3>
+                            <p><strong>Email:</strong> tienda@tiaguitozpetshop.com</p>
+                            <p><strong>Teléfono:</strong> +54 11 32187898</p>
+                            <p><strong>Dirección:</strong> Bermúdez 634, Buenos Aires</p> 
+                        </div>
+                    </div>
+
+                    {/* FORMULARIO */}
+                    <form 
+                        className="contacto-form"
+                        onSubmit={async (e) => {
+                            e.preventDefault();
+
+                            setIntentoEnvio(true);
+
+                            if (!formValido) return;
+
+                            setEnviandoFormulario(true);
+
+                            const formData = new FormData(e.target);
+
+                            const respuesta = await fetch("https://formspree.io/f/mwpgrjko", {
+                                method: "POST",
+                                body: formData,
+                                headers: { "Accept": "application/json" }
+                            });
+
+                            setEnviandoFormulario(false);
+
+                            if (respuesta.ok) {
+                                setFormEnviado(true);
+                                setFormValido(false);
+                                setInputsCompletos({ nombre: false, email: false, mensaje: false });
+                                setIntentoEnvio(false);
+
+                                e.target.reset();
+
+                                setTimeout(() => setFormEnviado(false), 4000);
+                            }
+                        }}
+                    >
+                        <h3>Envíanos un mensaje</h3>
+
+                        <input 
+                            type="text" 
+                            name="Nombre" 
+                            title="Nombre" 
+                            placeholder="Tu nombre" 
+                            required
+                            className={intentoEnvio && !inputsCompletos.nombre ? "input-error" : ""}
+                            onChange={(e) => {
+                                const valor = e.target.value.trim();
+                                setInputsCompletos(prev => ({ ...prev, nombre: valor !== "" }));
+                                setFormValido(
+                                    valor &&
+                                    e.target.form.Email.value.trim() &&
+                                    e.target.form["Tu mensaje"].value.trim()
+                                );
+                            }}
+                        />
+                        {intentoEnvio && !inputsCompletos.nombre && (
+                            <p className="input-msg-error">⚠️ Escribí tu nombre.</p>
+                        )}
+
+                        <input 
+                            type="email" 
+                            name="Email" 
+                            title="Email" 
+                            placeholder="Tu email" 
+                            required
+                            className={intentoEnvio && !inputsCompletos.email ? "input-error" : ""}
+                            onChange={(e) => {
+                                const valor = e.target.value.trim();
+                                setInputsCompletos(prev => ({ ...prev, email: valor !== "" }));
+                                setFormValido(
+                                    e.target.form.Nombre.value.trim() &&
+                                    valor &&
+                                    e.target.form["Tu mensaje"].value.trim()
+                                );
+                            }}
+                        />
+                        {intentoEnvio && !inputsCompletos.email && (
+                            <p className="input-msg-error">⚠️ Ingresá un email válido.</p>
+                        )}
+
+                        <textarea 
+                            name="Tu mensaje" 
+                            title="Tu mensaje" 
+                            placeholder="Tu mensaje..." 
+                            required
+                            className={intentoEnvio && !inputsCompletos.mensaje ? "input-error" : ""}
+                            onChange={(e) => {
+                                const valor = e.target.value.trim();
+                                setInputsCompletos(prev => ({ ...prev, mensaje: valor !== "" }));
+                                setFormValido(
+                                    e.target.form.Nombre.value.trim() &&
+                                    e.target.form.Email.value.trim() &&
+                                    valor
+                                );
+                            }}
+                        ></textarea>
+
+                        {intentoEnvio && !inputsCompletos.mensaje && (
+                            <p className="input-msg-error">⚠️ Escribí tu mensaje.</p>
+                        )}
+
+                        <input type="hidden" name="_subject" value="Nuevo mensaje desde Tiaguitoz PetShop" />
+
+                        <button 
+                            type="submit"
+                            disabled={!formValido || enviandoFormulario}
+                            className={
+                                !formValido || enviandoFormulario 
+                                    ? "btn-deshabilitado"
+                                    : "btn-activo"
+                            }
+                        >
+                            {enviandoFormulario ? (
+                                <div className="loader"></div>
+                            ) : (
+                                "Enviar mensaje"
+                            )}
+                        </button>
+
+                        {formEnviado && (
+                            <p className="form-exito">¡Mensaje enviado con éxito!</p>
+                        )}
+                    </form>
                 </div>
             </div>
 

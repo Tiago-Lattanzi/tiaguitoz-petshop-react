@@ -232,3 +232,204 @@
 .info-card button:hover {
     opacity: 0.8;
 }
+
+
+/* ===============================
+    SECCIÓN: INFORMACIÓN DE CONTACTO
+================================== */
+
+.inicio-contacto-seccion {
+    margin-top: 50px;
+    margin-bottom: 0px;
+    padding: 40px 20px;
+    background: #f5f7ff;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.inicio-contacto-seccion h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #1203f9;
+    font-weight: 700;
+}
+
+/* Grid responsive */
+.contacto-grid {
+    display: grid;
+    gap: 30px;
+}
+
+/* Mapa + info*/
+.contacto-mapa {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contacto-mapa iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 10px;
+}
+
+.contacto-datos h3 {
+    font-size: 20px;
+    color: #1203f9;
+    margin-bottom: 10px;
+}
+
+.contacto-datos p {
+    margin: 5px 0;
+    font-size: 15px;
+}
+
+/* Formulario */
+.contacto-form {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contacto-form h3 {
+    margin-bottom: 10px;
+    color: #1203f9;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.contacto-form input,
+.contacto-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cdd5ff;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.contacto-form textarea {
+    height: 120px;
+    resize: none;
+}
+
+.contacto-form input:required:invalid,
+.contacto-form textarea:required:invalid {
+    border: 2px solid #ff3b3b !important;
+}
+
+.contacto-form input:required:valid,
+.contacto-form textarea:required:valid {
+    border: 2px solid #4caf50 !important;
+}
+
+
+.contacto-form button {
+    background-color: #1203f9;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.contacto-form button:hover {
+    background-color: #0f02b9;
+}
+
+/* Version escritorio */
+@media (min-width: 900px) {
+    .contacto-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: stretch;
+    }
+
+    .contacto-mapa iframe {
+        height: 350px;
+    }
+}
+
+
+/* deshabilitado */
+.btn-deshabilitado {
+    background: #ccc !important;
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: scale(1);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.btn-activo {
+    background: #1203f9;
+    color: #fff;
+    cursor: pointer;
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.btn-activo:hover {
+    transform: scale(1.05);
+}
+
+/* btn cargando */
+.loader {
+    width: 22px;
+    height: 22px;
+    border: 3px solid #fff;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    margin: auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+
+/* ===========================
+    VALIDACIÓN DE FORMULARIO
+=========================== */
+
+.input-error {
+    border: 2px solid #ff4b4b !important;
+    background: #ffecec;
+}
+
+.input-msg-error {
+    margin-top: -8px;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    color: #d80000;
+}
+
+/* Fade-in para mensaje enviado */
+.form-exito {
+    background: #d4ffd8;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+    text-align: center;
+    color: #0a7a23;
+    font-weight: bold;
+
+    opacity: 0;
+    animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
