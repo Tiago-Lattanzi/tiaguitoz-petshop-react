@@ -196,7 +196,7 @@ const Productos = () => {
               }}
             />
             <h3 style={{ margin: "10px 0" }}>{producto.nombre}</h3>
-            <p style={{ fontWeight: "bold" }}>${Number(producto.precio)}</p>
+            <p style={{ fontWeight: "bold" }}>${Number(producto.precio).toLocaleString("es-AR")}</p>
             <p style={{ fontSize: "0.9em", color: "#666" }}>
               {producto.descripcion?.slice(0, 60)}...
             </p>

@@ -21,18 +21,18 @@ export function CarritoProvider({ children }) {
 
   //  Agregar producto al carrito
     const agregarProducto = (producto) => {
+
         setCarrito((prevCarrito) => {
             const productoExistente = prevCarrito.find((p) => p.id === producto.id);
 
             if (productoExistente) {
-                // si ya existe, aumenta la cantidad
                 const carritoActualizado = prevCarrito.map((p) =>
-                    p.id === producto.id ? { ...p, cantidad: p.cantidad + 1} : p
+                    p.id === producto.id ? { ...p, cantidad: p.cantidad + 1 } : p
                 );
                 toast.info(`Se agregó otro ${producto.nombre}`);
                 return carritoActualizado;
+
             } else {
-                // si no existe, lo agrega con cantidad 1
                 toast.success(`${producto.nombre} agregado al carrito`);
                 return [...prevCarrito, { ...producto, cantidad: 1 }];
             }
@@ -73,7 +73,9 @@ export function CarritoProvider({ children }) {
 
     // Calcular total
     const total = parseFloat(
-        carrito.reduce((acc, producto) => acc + producto.precio * producto.cantidad, 0).toFixed(2)
+        carrito
+            .reduce((acc, producto) => acc + producto.precio * producto.cantidad, 0)
+            .toFixed(2)
     );
 
     // Calcular cantidad total de productos (para el contador del header)

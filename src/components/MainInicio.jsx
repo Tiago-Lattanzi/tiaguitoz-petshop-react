@@ -82,7 +82,7 @@ function MainInicio() {
                             >
                                 <img src={p.imagen} alt={p.nombre} />
                                 <h3>{p.nombre}</h3>
-                                <p>${p.precio}</p>
+                                <p>${Number(p.precio).toLocaleString("es-AR")}</p>
                             </Link>
                         ))}
                     </div>

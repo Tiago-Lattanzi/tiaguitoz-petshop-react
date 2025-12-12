@@ -26,7 +26,7 @@ const ProductoDetalle = () => {
             />
             <h2>{producto.nombre}</h2>
             <p style={{ fontSize: "18px", color: "#444" }}>{producto.descripcion}</p>
-            <h3>${producto.precio.toLocaleString("es-AR", { minimumFractionDigits: 2 })}</h3>
+            <h3>${Number(producto.precio).toLocaleString("es-AR")}</h3>
             <button onClick={() => agregarProducto(producto)} style={{background: "#1203f9ff", color: "#fff", border: "none", borderRadius: "4px", cursor: "pointer", marginTop: "10px", padding: "8px 12px" }} >Agregar al carrito</button>
         </div>
     );
