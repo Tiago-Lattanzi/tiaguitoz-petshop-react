@@ -1,12 +1,71 @@
-# React + Vite
+# 🐶 Tiaguitoz PetShop - React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto de tienda online para productos de perros y gatos desarrollado con **React + Vite**.  
+Incluye catálogo de productos, filtros, paginación, carrito de compras y checkout.
 
-Currently, two official plugins are available:
+🌐 **Demo online:**  
+https://tiaguitoz-petshop-react.netlify.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+📦 **Repositorio:**  
+https://github.com/Tiago-Lattanzi/tiaguitoz-petshop-react
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Funcionalidades
+
+- Listado de productos dinámico
+- Filtro por categorías
+- Ordenamiento por precio y nombre
+- Paginación de productos
+- Detalle de producto
+- Carrito de compras
+- Checkout con validaciones
+- Context API para estado global
+- Diseño responsive
+- Deploy en Netlify
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+- React
+- Vite
+- React Router DOM
+- Context API
+- JavaScript (ES6+)
+- CSS personalizado
+- Netlify (deploy)
+
+---
+
+## ▶️ Cómo ejecutar el proyecto localmente
+
+1. Clonar el repositorio:
+```bash```
+git clone https://github.com/Tiago-Lattanzi/tiaguitoz-petshop-react.git
+
+2. Entrar al proyecto:
+cd tiaguitoz-petshop-react
+
+3. Instalar dependencias:
+npm install
+
+4. Ejecutar el proyecto:
+npm run dev
+
+El proyecto estará disponible en:
+http://localhost:5173
+
+---
+
+📌 Estado del proyecto
+
+Proyecto finalizado y funcional.
+Puede ser extendido con autenticación, backend real o pasarela de pagos.
+
+---
+
+👤 Autor
+
+Tiago Lattanzi
+Proyecto realizado como práctica de React para Talento Tech.
