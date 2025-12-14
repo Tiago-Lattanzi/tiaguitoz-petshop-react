@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { CarritoContext } from "../contexts/CarritoContext";
 import { FaTrashAlt } from "react-icons/fa";
@@ -9,6 +10,8 @@ const Carrito = () => {
     const { carrito, eliminarProducto, vaciarCarrito, aumentarCantidad, disminuirCantidad, total } = useContext(CarritoContext);
 
     const { estaAutenticado } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const [modal, setModal] = useState({ visible: false, tipo: "", id: null });
 
@@ -96,6 +99,12 @@ const Carrito = () => {
                                 maximumFractionDigits: 2
                             })}
                         </h3>
+                        <button
+                            className="carrito-finalizar"
+                            onClick={() => navigate("/checkout")}
+                        >
+                            Finalizar compra
+                        </button>
                     </div>
                 </>
             )}

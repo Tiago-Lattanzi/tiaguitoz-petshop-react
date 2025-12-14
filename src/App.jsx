@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AdminProductos from './components/AdminProductos';
 import Footer from './components/footer';
 import MainInicio from "./components/MainInicio";
+import Checkout from './components/Checkout';
 
 
 
@@ -23,9 +24,9 @@ function App() {
     <BrowserRouter>
       
       <div style={{ 
-        display: "flex", 
-        flexDirection: "column", 
-        minHeight: "100vh"
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100dvh"
       }}>
 
         {/* Mostrar Header siempre, con el nombre actual */}
@@ -37,6 +38,8 @@ function App() {
 
             {/* Ruta protegida */}
             <Route path="/carrito" element={<Carrito />} />
+
+            <Route path="/checkout" element={<Checkout />} />
 
             {/* Rutas publicas */}
             <Route path="/" element={<MainInicio />} />

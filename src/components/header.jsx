@@ -1,5 +1,5 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { CarritoContext } from "../contexts/CarritoContext";
 import { FaShoppingCart, FaHome, FaBoxOpen, FaSignOutAlt, FaSignInAlt, FaBars, FaTimes } from "react-icons/fa";
@@ -69,26 +69,29 @@ function Header() {
             </button>
 
             <div className="logoArea">
-                <Link to="/" className="logo">Bienvenido {usuario.nombre || "Anonimo"}</Link>
+                <NavLink to="/" className="logo">Bienvenido {usuario.nombre || "Anonimo"}</NavLink>
             </div>
 
             <Buscador />
 
             <nav className="nav">
-                <Link to="/" className="link"><FaHome /> Inicio</Link>
-                <Link to="/productos" className="link"><FaBoxOpen /> Productos</Link>
-                <Link 
-                    to={estaAutenticado ? "/carrito" : "#"} className="carrito"
+                <NavLink to="/" className={({ isActive }) => isActive ? "link active" : "link"}><FaHome /> Inicio</NavLink>
+                <NavLink to="/productos" className={({ isActive }) => isActive ? "link active" : "link"}><FaBoxOpen /> Productos</NavLink>
+                <NavLink
+                    to="/carrito"
+                    className={({ isActive }) =>
+                        `carrito ${isActive ? "active" : ""}`
+                    }
                     onClick={(e) => {
                         if (!estaAutenticado) {
-                            e.preventDefault();
-                            setMostrarModal(true)
+                        e.preventDefault();
+                        setMostrarModal(true);
                         }
                     }}
-                >
+                    >
                     <FaShoppingCart />
                     {cantidadTotal > 0 && <span className="contador">{cantidadTotal}</span>}
-                </Link>
+                    </NavLink>
             </nav>
 
             <div className="userArea">
@@ -110,9 +113,27 @@ function Header() {
                             <img src="/images/logo.png" alt="logo Tiaguitoz" />
                         </div>
                         <ul>
-                            <li><Link to="/" onClick={cerrarMenu}><FaHome /> Inicio</Link></li>
-                            <li><Link to="/productos" onClick={cerrarMenu}><FaBoxOpen /> Productos</Link></li>
-                            <li><Link to="/carrito" onClick={cerrarMenu}><FaShoppingCart /> Carrito</Link></li>
+                            <li><NavLink 
+                                to="/"
+                                className={({ isActive }) => isActive ? "active" : ""}
+                                onClick={cerrarMenu}
+                            >
+                                <FaHome /> Inicio
+                            </NavLink></li>
+                            <li><NavLink 
+                                to="/productos"
+                                className={({ isActive }) => isActive ? "active" : ""}
+                                onClick={cerrarMenu}
+                            >
+                                <FaBoxOpen /> Productos
+                            </NavLink></li>
+                            <li><NavLink 
+                                to="/carrito"
+                                className={({ isActive }) => isActive ? "active" : ""}
+                                onClick={cerrarMenu}
+                            >
+                                <FaShoppingCart /> Carrito
+                            </NavLink></li>
                         </ul>
 
                         <div className="logout-container">

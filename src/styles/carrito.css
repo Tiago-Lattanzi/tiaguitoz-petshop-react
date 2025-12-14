@@ -156,10 +156,6 @@
         text-align: center;
     }
 
-    .carrito-vaciar {
-        width: 100%;
-    }
-
     .carrito-footer h3 {
         font-size: 18px;
     }
@@ -200,4 +196,26 @@
     .btn-confirmar {
         width: 45%;
     }
+}
+
+/* btn finalizar compra */
+.carrito-finalizar {
+    background-color: #1203f9;
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.carrito-finalizar:hover {
+    background-color: #0e02c8;
+    transform: translateY(-1px);
+}
+
+.carrito-finalizar:active {
+    transform: translateY(0);
 }
